@@ -1,0 +1,8 @@
+on: workflow_dispatch
+
+jobs:
+  log_something:
+    name: 'Log something'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello hello hello"
