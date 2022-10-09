@@ -1,4 +1,4 @@
-name: pullrequest
+name: default
 
 on:
   pull_request:
