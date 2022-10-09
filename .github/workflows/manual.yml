@@ -1,3 +1,5 @@
+name: manual
+
 on:
   workflow_dispatch:
 
