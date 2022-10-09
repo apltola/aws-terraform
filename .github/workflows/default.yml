@@ -2,8 +2,8 @@ name: default
 
 on:
   pull_request:
-    paths:
-      - 'master'
+    branches:
+      - master
 
 jobs:
   build:
