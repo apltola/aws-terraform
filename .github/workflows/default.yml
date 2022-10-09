@@ -1,0 +1,19 @@
+name: default
+
+on:
+  pull_request:
+    paths:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: cd app && npm run build
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: cd app && npm install && npm run test:ci
