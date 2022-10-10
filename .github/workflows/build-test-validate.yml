@@ -1,4 +1,4 @@
-name: default
+name: Build, Test and Validate
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build_and_test:
+  build-and-test:
     name: 'Build and Test'
     runs-on: ubuntu-latest
     steps:
@@ -16,3 +16,9 @@ jobs:
           npm install
           npm run build
           npm run test:ci
+
+  validate-terraform:
+    name: 'Validate terraform'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "VALIDATE TERRAFORM!!"
