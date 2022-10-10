@@ -22,5 +22,6 @@ jobs:
     name: 'Validate terraform'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run: echo "GITHUB_SHA --> $GITHUB_SHA"
       - run: echo "sha short ---> $(git rev-parse --short HEAD)"
