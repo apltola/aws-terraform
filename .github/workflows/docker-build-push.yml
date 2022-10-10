@@ -7,18 +7,9 @@ on:
 
 jobs:
   build-and-test:
-    name: 'Build and Test'
+    name: 'Docker Build and Push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: |
-          cd app
-          npm install
-          npm run build
-          npm run test:ci
-
-  validate-terraform:
-    name: 'Validate terraform'
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "VALIDATE TERRAFORM!!"
+          echo "DOCKER BUILD AND PUSH!!!!"
