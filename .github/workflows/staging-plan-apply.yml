@@ -1,4 +1,4 @@
-name: manual
+name: Staging Plan and Apply
 
 on:
   workflow_dispatch:
