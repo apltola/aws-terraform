@@ -23,4 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "GITHUB_SHA --> $GITHUB_SHA"
-      - run: echo "VALIDATE TERRAFORM!!"
+      - name: Set outputs
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - run: echo "sha short ---> ${{ steps.vars.outputs.sha_short }}"
