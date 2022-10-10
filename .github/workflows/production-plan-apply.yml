@@ -1,9 +1,8 @@
-name: Deploy to Staging
+name: Deploy to Production
 
 on:
   push:
     branches:
-      - master
       - production
 
 jobs:
@@ -15,14 +14,14 @@ jobs:
       - run: |
           echo "DOCKER BUILD AND PUSH!!!!"
 
-  staging-plan:
-    name: 'Staging Plan'
+  production-plan:
+    name: 'Production Plan'
     runs-on: ubuntu-latest
     steps:
-      - run: echo "STAGING PLAN!!"
+      - run: echo "PRODUCTION PLAN!!"
 
-  staging-apply:
-    name: 'Staging Apply'
+  production-apply:
+    name: 'Production Apply'
     runs-on: ubuntu-latest
     steps:
-      - run: echo "STAGING APPLY!!"
+      - run: echo "PRODUCTION APPLY!!"

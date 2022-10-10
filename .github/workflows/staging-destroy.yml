@@ -1,0 +1,13 @@
+name: Staging Destroy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  destroy-staging:
+    name: 'Destroy staging'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          echo "DESTORY STAGING!!!!"
