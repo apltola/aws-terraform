@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: echo "GITHUB_SHA --> $GITHUB_SHA"
       - run: |
           cd app
           npm install
@@ -21,4 +22,5 @@ jobs:
     name: 'Validate terraform'
     runs-on: ubuntu-latest
     steps:
+      - run: echo "GITHUB_SHA --> $GITHUB_SHA"
       - run: echo "VALIDATE TERRAFORM!!"
