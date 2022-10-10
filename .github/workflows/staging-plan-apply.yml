@@ -1,0 +1,17 @@
+name: Staging Plan and Apply
+
+on:
+  workflow_dispatch:
+
+jobs:
+  staging-plan:
+    name: 'Staging Plan'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "STAGING PLAN!!"
+
+  staging-apply:
+    name: 'Staging Apply'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "STAGING APPLY!!"
