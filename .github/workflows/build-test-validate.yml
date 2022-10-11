@@ -12,7 +12,7 @@ jobs:
       sha_short: ${{ steps.step1.outputs.sha_short }}
     steps:
       - id: step1
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+        run: echo "::set-output name=sha_short::juukeli"
 
   build-and-test:
     name: 'Build and Test'
