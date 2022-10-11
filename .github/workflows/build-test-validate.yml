@@ -30,3 +30,7 @@ jobs:
       - run: echo $SHA
         env:
           SHA: ${{ steps.short-sha.outputs.sha }}
+      - name: Add SHORT_SHA env
+        run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+      - name: Test step
+        run: echo ${SHORT_SHA}
