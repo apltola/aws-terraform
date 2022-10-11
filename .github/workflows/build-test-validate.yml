@@ -22,14 +22,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: benjlevesque/short-sha@v1.2
-        id: short-sha
-        with:
-          length: 8
-      - run: echo "GITHUB_SHA --> $GITHUB_SHA"
-      - run: echo $SHA
-        env:
-          SHA: ${{ steps.short-sha.outputs.sha }}
       - name: Add SHORT_SHA env
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
       - name: Test step
