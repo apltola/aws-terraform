@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "GITHUB_SHA --> $GITHUB_SHA"
-      - run: echo "hmmmmm -----> ${{needs.set-vars.outputs.output1}}"
+      - run: echo hmmmmm -----> ${{needs.set-vars.outputs.output1}}
       - run: echo ${{needs.set-vars.outputs.sha_short}}
       - run: |
           cd app
@@ -37,7 +37,7 @@ jobs:
       - uses: benjlevesque/short-sha@v1.2
         id: short-sha
         with:
-          length: 6
+          length: 8
       - run: echo "GITHUB_SHA --> $GITHUB_SHA"
       - run: echo $SHA
         env:
