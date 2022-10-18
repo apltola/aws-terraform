@@ -15,6 +15,10 @@ jobs:
       - name: Add SHORT_SHA env
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
       - run: echo "Docker build and push with tag=$SHORT_SHA"
+      - name: Install aws-cli
+        uses: unfor19/install-aws-cli-action@v1.0.3
+      - name: Run aws s3 ls
+        run: aws s3 ls
 
   staging-plan:
     name: 'Staging Plan'
