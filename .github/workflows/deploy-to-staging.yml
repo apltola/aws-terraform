@@ -24,7 +24,7 @@ jobs:
         run: |
           cd app
           docker build --compress -t ${{ secrets.ECR_REPO }}:$SHORT_SHA .
-          $(aws ecr get-login --no-include-email --region eu-north-1)
+          aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 188405059934.dkr.ecr.eu-north-1.amazonaws.com
           docker push ${{ secrets.ECR_REPO }}:$SHORT_SHA
           docker tag ${{ secrets.ECR_REPO }}:$SHORT_SHA ${{ secrets.ECR_REPO }}:latest
           docker push ${{ secrets.ECR_REPO }}:latest
