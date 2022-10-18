@@ -12,11 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set outputs
-        id: vars
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-      - run: |
-          echo "Docker build and push with commit: ${{ steps.vars.outputs.sha_short }}"
+      - name: Add SHORT_SHA env
+        run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+      - run: echo "Docker build and push with tag=$SHORT_SHA"
 
   staging-plan:
     name: 'Staging Plan'
