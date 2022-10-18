@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: |
-          echo "DOCKER BUILD AND PUSH!!!!"
+      - name: Add SHORT_SHA env
+        run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+      - run: echo "Docker build and push with tag=$SHORT_SHA"
 
   production-plan:
     name: 'Production Plan'
