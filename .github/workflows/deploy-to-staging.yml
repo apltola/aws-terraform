@@ -45,14 +45,14 @@ jobs:
 
   staging-plan:
     name: 'Staging Plan'
-    needs: build-and-push
+    needs: docker-build-and-push
     runs-on: ubuntu-latest
     steps:
       - run: echo "STAGING PLAN!!"
 
   staging-apply:
     name: 'Staging Apply'
-    needs: [build-and-push, staging-plan]
+    needs: [docker-build-and-push, staging-plan]
     runs-on: ubuntu-latest
     steps:
       - run: echo "STAGING APPLY!!"
