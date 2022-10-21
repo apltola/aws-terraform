@@ -48,7 +48,17 @@ jobs:
     needs: docker-build-and-push
     runs-on: ubuntu-latest
     steps:
-      - run: echo "STAGING PLAN!!"
+      - uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.2.0
+      - name: Terraform validate
+        run: |
+          cd deploy
+          terraform init
+          terraform workspace new staging
+          terraform plan
 
   staging-apply:
     name: 'Staging Apply'
