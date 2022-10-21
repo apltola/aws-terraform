@@ -1,2 +1,0 @@
-init terraform after AWS credentials are setup:
-docker-compose -f deploy/docker-compose.yml run -rm terraform init
