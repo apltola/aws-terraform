@@ -10,7 +10,18 @@ env:
   ECR_REPO: ${{ secrets.ECR_REPO }}
 
 jobs:
-  build-and-push:
+  build-and-test:
+    name: 'Build and Test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          cd app
+          npm install
+          npm run build
+          npm run test:ci
+
+  docker-build-and-push:
     name: 'Docker Build and Push'
     runs-on: ubuntu-latest
     steps:
