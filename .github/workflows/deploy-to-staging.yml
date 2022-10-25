@@ -54,7 +54,7 @@ jobs:
         run: |
           cd deploy
           terraform init
-          terraform workspace new staging
+          terraform workspace new staging || terraform workspace select staging
           terraform plan
 
   staging-apply:
