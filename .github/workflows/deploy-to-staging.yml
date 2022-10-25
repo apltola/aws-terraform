@@ -63,5 +63,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Test if terraform exists
-        run: terraform --help
+      - name: Terraform Apply Staging
+        run: |
+          cd deploy
+          terraform init
+          terraform workspace select staging
+          terraform apply -auto-approve

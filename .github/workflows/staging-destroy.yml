@@ -1,7 +1,13 @@
-name: Staging Destroy
+name: Destroy Staging
 
 on:
   workflow_dispatch:
+
+env:
+  ECR_REPO: ${{ secrets.ECR_REPO }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: eu-north-1
 
 jobs:
   destroy-staging:
@@ -10,4 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          echo "DESTORY STAGING!!!!"
+          cd deploy
+          terraform init
+          terraform workspace select staging || workspace workspace new staging
+          terraform destroy -auto-approve
