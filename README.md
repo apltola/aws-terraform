@@ -1,4 +1,8 @@
-# node api – aws docker terraform
+# Node API – Docker Terraform AWS
+
+![aws graph](infra-graph.png)
+
+## Local development
 
 Run terraform with Docker Compose:
 
