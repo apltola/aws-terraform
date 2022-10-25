@@ -54,7 +54,7 @@ jobs:
         run: |
           cd deploy
           terraform init
-          terraform workspace new staging || terraform workspace select staging
+          terraform workspace select staging || terraform workspace new staging
           terraform plan
 
   staging-apply:
@@ -62,4 +62,6 @@ jobs:
     needs: [docker-build-and-push, staging-plan]
     runs-on: ubuntu-latest
     steps:
-      - run: echo "STAGING APPLY!!"
+      - uses: actions/checkout@v3
+      - name: Test if terraform exists
+        run: terraform --help
