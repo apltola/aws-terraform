@@ -1,6 +1,6 @@
 # Node API – Docker Terraform AWS
 
-![aws graph](./documentation/infra-graph.png)
+![aws graph](./documentation/infra.png)
 
 ## Local development
 
