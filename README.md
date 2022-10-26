@@ -1,12 +1,13 @@
 # Node API – Docker Terraform AWS
 
-![aws graph](infra-graph.png)
+![aws graph](./documentation/infra-graph.png)
 
 ## Local development
 
 Run terraform with Docker Compose:
 
 ```
+docker-compose -f deploy/docker-compose.yml run --rm terraform workspace new dev
 docker-compose -f deploy/docker-compose.yml run --rm terraform init
 docker-compose -f deploy/docker-compose.yml run --rm terraform fmt
 docker-compose -f deploy/docker-compose.yml run --rm terraform validate
