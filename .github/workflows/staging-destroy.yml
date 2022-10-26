@@ -11,7 +11,7 @@ env:
 
 jobs:
   destroy-staging:
-    name: 'Destroy staging'
+    name: "Destroy staging"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,5 +19,5 @@ jobs:
         run: |
           cd deploy
           terraform init
-          terraform workspace select staging || workspace workspace new staging
+          terraform workspace select staging
           terraform destroy -auto-approve
