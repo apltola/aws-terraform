@@ -17,3 +17,8 @@ variable "db_username" {
 variable "db_password" {
   description = "Password for the RDS postgres instance"
 }
+
+variable "ecr_image_api" {
+  description = "ECR image for API"
+  default     = "188405059934.dkr.ecr.eu-north-1.amazonaws.com/node-api:latest"
+}

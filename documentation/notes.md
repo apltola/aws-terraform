@@ -20,3 +20,11 @@
 - **Route table**
   - Route table is a way of adding routes to a Subnet
   - It needs to be associated with a VPC by creating a 'route_table_association'
+
+## ECS
+
+- Container Definition template:
+  - A json file which contains all the details of our container so AWS knows how to run it in production
+    - Image registry & image tag
+    - Memory to assign to it
+    - Environment vars

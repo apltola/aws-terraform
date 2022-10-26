@@ -16,7 +16,7 @@ env:
 
 jobs:
   build-and-test:
-    name: "Build and Test"
+    name: 'Build and Test'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
           npm run test:ci
 
   docker-build-and-push:
-    name: "Docker Build and Push"
+    name: 'Docker Build and Push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -44,7 +44,7 @@ jobs:
           docker push $ECR_REPO:latest
 
   staging-plan:
-    name: "Staging Plan"
+    name: 'Staging Plan'
     needs: docker-build-and-push
     runs-on: ubuntu-latest
     steps:
@@ -56,12 +56,14 @@ jobs:
       - name: Terraform Plan Staging
         run: |
           cd deploy
+          export TF_VAR_ecr_image_api=$ECR_REPO:$SHORT_SHA
+          echo "TF_VAR_ecr_image_api -----> $ECR_REPO:$SHORT_SHA"
           terraform init
           terraform workspace select staging || terraform workspace new staging
           terraform plan
 
   staging-apply:
-    name: "Staging Apply"
+    name: 'Staging Apply'
     needs: [docker-build-and-push, staging-plan]
     runs-on: ubuntu-latest
     steps:
@@ -69,6 +71,8 @@ jobs:
       - name: Terraform Apply Staging
         run: |
           cd deploy
+          export TF_VAR_ecr_image_api=$ECR_REPO:$SHORT_SHA
+          echo "TF_VAR_ecr_image_api -----> $ECR_REPO:$SHORT_SHA"
           terraform init
           terraform workspace select staging
           terraform apply -auto-approve

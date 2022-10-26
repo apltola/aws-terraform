@@ -16,3 +16,7 @@ docker-compose -f deploy/docker-compose.yml run --rm terraform apply
 ```
 
 etc...
+
+## Misc
+
+Terraform AWS docs: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
