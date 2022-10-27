@@ -28,3 +28,13 @@
     - Image registry & image tag
     - Memory to assign to it
     - Environment vars
+
+## Load balancer
+
+- Load balancer consists of three different groups:
+  - Load balancer itself
+  - Target groups
+    - target group is a group of servers that the load balancer can forward requests to
+    - in our case, the target group contains the ECS services
+  - Listener
+    - Listener is used to accept the requests to the load balancer
