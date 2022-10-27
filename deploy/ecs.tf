@@ -24,7 +24,7 @@ resource "aws_iam_role_policy_attachment" "task_execution_role" {
 }
 
 resource "aws_iam_role" "app_iam_role" {
-  name               = "${local.prefix}-task"
+  name               = "${local.prefix}-task-role"
   assume_role_policy = file("./templates/ecs/assume-role-policy.json")
 
   tags = local.common_tags
