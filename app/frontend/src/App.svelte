@@ -74,7 +74,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: .5em;
+    padding: 0.5em;
   }
 
   nav button {
