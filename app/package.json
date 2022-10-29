@@ -9,10 +9,10 @@
     "clean": "rimraf dist",
     "tsc": "tsc",
     "build": "npm-run-all clean tsc",
-    "i:frontend": "npm install --prefix frontend",
-    "build:frontend": "npm run build --prefix frontend",
     "test": "jest src/**/* --no-cache --run-in-band",
-    "test:ci": "jest src/**/* --ci"
+    "test:ci": "jest src/**/* --ci",
+    "i:frontend": "npm install --prefix frontend",
+    "build:frontend": "npm run build --prefix frontend"
   },
   "jest": {
     "preset": "ts-jest",
