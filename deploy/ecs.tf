@@ -43,6 +43,7 @@ data "template_file" "api_container_definitions" {
   vars = {
     "app_image"        = var.ecr_image_api
     "allowed_hosts"    = aws_lb.api.dns_name
+    "node_env"         = "production"
     "log_group_name"   = aws_cloudwatch_log_group.ecs_task_logs.name
     "log_group_region" = data.aws_region.current.name
   }

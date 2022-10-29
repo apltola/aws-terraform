@@ -4,7 +4,10 @@
     "image": "${app_image}",
     "essential": true,
     "memoryReservation": 256,
-    "environment": [{ "name": "ALLOWED_HOSTS", "value": "${allowed_hosts}" }],
+    "environment": [
+      { "name": "ALLOWED_HOSTS", "value": "${allowed_hosts}" },
+      { "name": "NODE_ENV", "value": "${node_env}" }
+    ],
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {

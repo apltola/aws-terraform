@@ -11,7 +11,7 @@ env:
 
 jobs:
   build-and-test:
-    name: "Build and Test"
+    name: 'Build and Test'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,9 +21,11 @@ jobs:
           npm install
           npm run build
           npm run test:ci
+          npm run i:frontend
+          npm run build:frontend
 
   validate-terraform:
-    name: "Validate terraform"
+    name: 'Validate terraform'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
