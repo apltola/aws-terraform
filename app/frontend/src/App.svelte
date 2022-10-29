@@ -1,48 +1,46 @@
 <script>
   import Icon from 'svelte-icons-pack/Icon.svelte';
-  import FaSolidBars from "svelte-icons-pack/fa/FaSolidBars";
-  import FaSolidTimes from "svelte-icons-pack/fa/FaSolidTimes";
-  import { fly } from 'svelte/transition'
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './components/Counter.svelte'
+  import FaSolidBars from 'svelte-icons-pack/fa/FaSolidBars';
+  import FaSolidTimes from 'svelte-icons-pack/fa/FaSolidTimes';
+  import { fly } from 'svelte/transition';
+  import svelteLogo from './assets/svelte.svg';
+  import Counter from './components/Counter.svelte';
 
-  let menuIsOpen = false
-  let response
+  let menuIsOpen = false;
+  let response;
 
   async function fetchSomething() {
-    const res = await fetch('/api/users').then(r => r.json())
-    response = res
-    console.log('res', res)
+    const res = await fetch('/api/users').then((r) => r.json());
+    response = res;
+    console.log('res', res);
   }
 
   function toggleMenu() {
-    menuIsOpen = !menuIsOpen
+    menuIsOpen = !menuIsOpen;
   }
 </script>
 
 <nav class="nav">
   <div style="display:flex;justify-content:flex-end;padding-bottom:.5em;">
-    <button
-      class="menu-toggle"
-      on:click={toggleMenu}
-      >
-      <Icon src={menuIsOpen ? FaSolidTimes : FaSolidBars} size="32" color="rgba(255, 255, 255, 0.87)" />
+    <button class="menu-toggle" on:click={toggleMenu}>
+      <Icon
+        src={menuIsOpen ? FaSolidTimes : FaSolidBars}
+        size="32"
+        color="rgba(255, 255, 255, 0.87)"
+      />
       <span style="padding-left:.5em;">Menu</span>
     </button>
   </div>
   {#if menuIsOpen}
-    <button
-      class="menu-link"
-      transition:fly="{{ x: 100, duration: 350}}"
-      >
+    <button class="menu-link" transition:fly={{ x: 100, duration: 350 }}>
       Link 1
     </button>
   {/if}
   {#if menuIsOpen}
     <button
       class="menu-link"
-      transition:fly="{{ x: 100, duration: 350, delay: 100}}"
-      >
+      transition:fly={{ x: 100, duration: 350, delay: 100 }}
+    >
       Link 2
     </button>
   {/if}
@@ -62,9 +60,7 @@
   <div class="card">
     <Counter />
   </div>
-  <button on:click={fetchSomething}>
-    fetch data from api
-  </button>
+  <button on:click={fetchSomething}> fetch data from api </button>
 
   {#if response}
     <pre>
@@ -83,7 +79,7 @@
 
   nav button {
     display: block;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
   }
 
   .menu-toggle {
