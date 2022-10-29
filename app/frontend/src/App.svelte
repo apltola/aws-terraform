@@ -1,6 +1,14 @@
 <script>
   import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
+  import Counter from './components/Counter.svelte'
+
+  let response
+
+  async function fetchSomething() {
+    const res = await fetch('/api/users').then(r => r.json())
+    response = res
+    console.log('res', res)
+  }
 </script>
 
 <main>
@@ -12,19 +20,20 @@
       <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
     </a>
   </div>
-  <h1>Vite + Svelte</h1>
+  <h1>Jopas jotain</h1>
 
   <div class="card">
     <Counter />
   </div>
+  <button on:click={fetchSomething}>
+    fetch data from api
+  </button>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
+  {#if response}
+    <pre>
+      {JSON.stringify(response, null, 2)}
+    </pre>
+  {/if}
 </main>
 
 <style>
@@ -39,7 +48,7 @@
   .logo.svelte:hover {
     filter: drop-shadow(0 0 2em #ff3e00aa);
   }
-  .read-the-docs {
-    color: #888;
+  pre {
+    text-align: center;
   }
 </style>
