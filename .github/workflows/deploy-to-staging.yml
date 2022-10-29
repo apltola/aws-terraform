@@ -27,6 +27,17 @@ jobs:
           npm run build
           npm run test:ci
 
+  compile-frontend:
+    name: 'Compile frontend'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: npm build:frontend
+        run: |
+          cd app
+          npm run i:frontend
+          npm run build:frontend
+
   docker-build-and-push:
     name: 'Docker Build and Push'
     runs-on: ubuntu-latest
