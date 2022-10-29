@@ -1,4 +1,7 @@
-version: '3.9'
+version: "3.9"
+
+# Run terraform commands locally by executing them in a docker container running terraform
+# e.g. docker-compose -f deploy/docker-compose.yml run --rm terraform validate
 
 services:
   terraform:

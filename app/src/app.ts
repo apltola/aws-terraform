@@ -6,12 +6,8 @@ app.use(express.json());
 
 app.use(usersRouter);
 
-app.get('/', (req, res) => {
-  res.json('hello from api');
-});
-
-app.all('*', (req, res) => {
-  res.status(404).json('Not found');
+app.get('/api', (req, res) => {
+  res.json({ msg: 'hello', node_env: process.env.NODE_ENV });
 });
 
 export default app;
