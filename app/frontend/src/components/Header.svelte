@@ -1,20 +1,24 @@
 <script>
-  import { Link } from 'svelte-navigator';
+  import { createEventDispatcher } from 'svelte';
   import Icon from 'svelte-icons-pack/Icon.svelte';
   import FaSolidBars from 'svelte-icons-pack/fa/FaSolidBars';
   import FaSolidTimes from 'svelte-icons-pack/fa/FaSolidTimes';
   import { fly } from 'svelte/transition';
 
+  const dispatch = createEventDispatcher();
   let menuIsOpen = false;
 
   function toggleMenu() {
     menuIsOpen = !menuIsOpen;
+    dispatch('menutoggled', {
+      menuIsOpen,
+    });
   }
 </script>
 
 <header>
   <nav class="nav">
-    <div style="display:flex;justify-content:flex-end;padding-bottom:.5em;">
+    <div class="menu-toggle-container">
       <button class="menu-toggle" on:click={toggleMenu}>
         <Icon
           src={menuIsOpen ? FaSolidTimes : FaSolidBars}
@@ -50,6 +54,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 1;
     padding: 0.5em;
   }
 
@@ -69,6 +74,12 @@
     justify-content: center;
     text-align: center;
     color: white;
+  }
+
+  .menu-toggle-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 0.5em;
   }
 
   .menu-toggle {

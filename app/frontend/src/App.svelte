@@ -1,13 +1,22 @@
 <script>
-  import { Router, Route, Link } from 'svelte-navigator';
+  import { Router, Route } from 'svelte-navigator';
   import Header from './components/Header.svelte';
   import Home from './views/Home.svelte';
+
+  let shouldBlur = false;
+  function handleMenuToggled(event) {
+    shouldBlur = event.detail.menuIsOpen;
+  }
 </script>
 
 <Router>
-  <Header />
+  <Header on:menutoggled={handleMenuToggled} />
 
-  <main>
+  <main
+    style={`filter: blur(${shouldBlur ? '1rem' : '0'}); pointer-events: ${
+      shouldBlur ? 'none' : 'all'
+    }`}
+  >
     <Route path="/">
       <Home />
     </Route>
@@ -21,6 +30,8 @@
 
 <style>
   main {
+    padding-top: 2em;
     flex: 1;
+    transition: all ease-in-out 200ms;
   }
 </style>
