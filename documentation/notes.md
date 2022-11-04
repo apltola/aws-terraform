@@ -1,21 +1,20 @@
 ## network
 
 - **VPC**
-  - VPC (virtual private cloud) is a resource which allows you to group all of your network resources together
-  - Each of our environments is gonna have their own VPC
-  - within a VPC we're gonna have Subnets which are used to run our resources and give them the appropriate access they need to the internet
+  - VPC (virtual private cloud) is a resource which allows us to group all of your network resources together
+  - Within a VPC we have Subnets, which are used to run our resources and give them the appropriate access to the internet
 - **Internet Gateway**
-  - Internet gateway is a resource which is used by our Subnets to accept connections from the public internet
+  - Internet gateway is a resource used by our public Subnets to accept connections from the internet
 - **NAT Gateway**
   - NAT gateway is used to give resources outbound access to the public internet
 - **Public Subnets**
   - Public subnets are used to make resources available from the public internet
-  - subnets are used for things such as our LoadBalancer
+  - Subnets are used for resources such as our LoadBalancer, which will receive requests from the public internet
 - **Private Subnets**
-  - Public subnets are used to protect resources from the public internet (e.g. our database)
+  - Private subnets are used to protect resources from the public internet (e.g. our database)
 - **Availability zone**
-  - A way of dividing regions up into separate zones so that if one of the zones goes down, the other zone can take over and handle all of the traffic
-  - basically, a way to help against the risk of the service going down
+  - Availability zone is way of dividing regions up into separate zones, so that if one of the zones goes down, an other zone can take over and handle all of the traffic
+  - basically, az's are a way to mediate the risk of our service going down
   - it's good practice to always create your subnets in more than one availability zone
 - **Route table**
   - Route table is a way of adding routes to a Subnet
